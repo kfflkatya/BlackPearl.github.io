@@ -1,0 +1,456 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('fon.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+header {
+    background-color: #615b52;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.nav-menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu li {
+    margin: 0 30px;
+}
+
+.nav-menu li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #b19c91;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+    color: rgb(110, 94, 72);
+    font-weight: bold;
+    background: #f5d8c9;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    box-shadow: 0 0 5px rgb(255, 255, 255), 0 0 10px rgb(110, 94, 72), 0 0 20px rgb(145, 131, 114), 0 0 25px rgb(206, 171, 124), 0 0 30px rgb(95, 78, 56);
+}
+
+
+
+#home {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    top: -30%;
+}
+
+#home h1 {
+    font-size: 50px;
+}
+
+
+#games {
+    padding: 50px;
+    text-align: center;
+    background-color: #f4f4f4;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.game-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card h3, .card p {
+    margin: 10px 0;
+}
+
+.game-image {
+    width: 100%;
+    border-radius: 5px;
+}
+
+#about {
+    padding: 50px;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+}
+
+#about img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#contacts {
+    padding: 50px;
+    text-align: center;
+    background-color: rgb(104, 92, 74);
+    color: #fff;
+}
+
+
+
+
+
+
+#welcome-banner {
+    background-color:  #615b52;
+    padding: 5px;
+    text-align: center;
+    font-size: 30px;
+    margin: 0px;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: #3a3630 1px 5px ;
+    position: relative;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+/* Скрытие элементов страницы не в поле зрения, чтобы потом они появлялись с красивой анимацией */
+.hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.card {
+    position: relative; /* Позволяет позиционировать дочерние элементы относительно него */
+    width: 300px; /* Задайте ширину карточки */
+    height: 500px; /* Задайте высоту карточки */
+    border: 1px solid #ccc; /* Граница карточки */
+    overflow: hidden; /* Скрыть содержимое вне границ */
+    margin: 20px; /* Отступ */
+    transition: transform 0.3s; /* Плавный переход для изменения масштаба */
+}
+
+.card:hover {
+    transform: scale(1.05); 
+    background-color: #685e45;
+    box-shadow: 0 0 5px rgb(255, 255, 255), 0 0 10px rgb(110, 94, 72), 0 0 20px rgb(145, 131, 114), 0 0 25px rgb(206, 171, 124), 0 0 30px rgb(95, 78, 56);
+}
+
+.falling-image {
+    position: absolute;
+    top: 0; /* Начальная позиция */
+    left: 50%; /* Центрируем картинку */
+    transform: translateX(-50%); /* Сдвигаем влево на половину ширины изображения */
+    width: 50px; /* Ширина изображения */
+    height: auto; /* Соотношение сторон */
+    animation: fall 4s forwards; /* Применяем анимацию падения */
+}
+
+@keyframes fall {
+    from {
+        top: -50px; /* Начальная позиция — выше видимого экрана */
+        opacity: 0.5; /* Полная видимость */
+    }
+    to {
+        top: 80%; /* Конечная позиция где-то внизу карточки */
+        opacity: 0; /* Исчезает */
+    }
+}
+
+
+
+
+
+
+/* Стили для анимации скрытия и появления содержимого игровых карточек */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 300px;
+    max-width: 300px;
+    background: #332f25;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    min-height: 400px;
+}
+
+.game-info, .game-review {
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    max-height: 500px;
+    overflow: hidden;
+    will-change: opacity, max-height;
+}
+
+.game-review {
+    opacity: 0;
+    transform: translateY(20px);
+    height: 0; /* Начальная высота 0 для скрытия */
+    overflow: hidden;
+}
+
+.game-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hide {
+    opacity: 0;
+    max-height: 0;
+    display: none;
+}
+
+.show {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.game-info.hide {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transform: translateY(-20px);
+}
+
+.game-review {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transform: translateY(20px);
+}
+
+.game-review.show {
+    opacity: 1;
+    height: auto;
+    transform: translateY(0);
+}
+
+.game-image {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card h3, .card p {
+    margin: 10px 0;
+    color: #fff;
+    font-family: cursive;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(109, 78, 35);
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    align-self: center;
+}
+
+.button:hover {
+    background-color: rgb(190, 163, 125);
+}
+
+#heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    margin: 0;
+}
+
+.heart {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    animation: fall 5s linear infinite;
+    opacity: 1;
+    background: url('heart.png') no-repeat center/contain;
+}
+@keyframes fall {
+    0% {
+        top: -10%;
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        align-items: center; 
+        display: none;
+    }
+
+    .game-cards {
+        flex-direction: column;
+        gap: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    #home h1 {
+        font-size: 32px;
+    }
+
+    .main-button {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+
+    .rainbow-text {
+        font-size: 36px;
+    }
+
+    #heart-container {
+        height: 20px;
+    }
+
+    #about img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    header {
+        padding: 5px 0;
+    }
+
+    #contacts, #about, #games {
+        padding: 20px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .nav-menu.open {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 30px;
+    text-decoration: none;
+    margin: 0;
+    background-color: #1f1f1f;
+    font-family: sans-serif;
+    font-style: normal;
+    text-align: center;
+}
+
+
+footer a {
+    color: #ddd;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-style: normal;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.form {
+    max-width: 320px;
+    padding: 15px;
+    margin: 20px auto;
+    background-color: #fff;
+    margin-bottom: 11%;
+  }
+  
+  .input {
+    display: block;
+    width: 100%;
+    padding: 8px 1px;
+    margin-bottom: 10px;
+    border: 2px solid #ccc;  
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #413b34;
+
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: 0;
+    background-color: rgb(110, 94, 72);
+    cursor: pointer;
+    border-radius: 0%;
+    margin: 10px;
+    font-family: sans-serif;
+    font-size: 25px;
+    margin-left: 0px;
+  }
+
+  button:hover {
+    -ms-transform: scale(1); /* IE 9 */
+    -webkit-transform: scale(1); /* Safari 3-8 */
+    transform: scale(1);
+    color: #fff;
+    background: rgb(223, 192, 148);
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    box-shadow: 0 0 5px rgb(255, 255, 255), 0 0 10px rgb(110, 94, 72), 0 0 20px rgb(145, 131, 114), 0 0 25px rgb(206, 171, 124), 0 0 30px rgb(95, 78, 56);
+  }
+
+
+
+  .wave-text {
+    font-size: 3rem; /* Размер текста */
+    white-space: nowrap; /* Запрет на перенос строк */
+    display: flex; /* Делаем элемент flex-контейнером */
+    justify-content: center;
+}
+
+.letter {
+    display: inline-block; /* Позволяет использовать анимацию для каждой буквы */
+    transition: transform 0.3s ease; /* Плавный переход для трансформации */
+}
